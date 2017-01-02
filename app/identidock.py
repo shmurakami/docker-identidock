@@ -1,5 +1,5 @@
-from flask import Flask, Response
-import requests
+from flask import Flask, Response, request
+#import requests
 
 app = Flask(__name__)
 default_name = "Joe Bloggs"
@@ -20,7 +20,7 @@ def mainpage():
 
     return header + body + footer
 
-@app.routea('/monster/<name>')
+@app.route('/monster/<name>')
 def get_identicon(name):
     r= requests.get('http://dnmonster:8080/monster/' + name + '?size=80')
     image = r.content
